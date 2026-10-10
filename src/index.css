@@ -1,0 +1,7 @@
+/* EduTrack design system — entry point */
+@import "./styles/tokens.css";
+@import "./styles/base.css";
+@import "./styles/components.css";
+@import "./styles/auth.css";
+@import "./styles/shell.css";
+@import "./styles/pages.css";
