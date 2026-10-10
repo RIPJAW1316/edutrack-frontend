@@ -1,6 +1,12 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8081";
+// Set VITE_API_URL at build time for deployments (e.g. https://edutrack-api-ripjaw.onrender.com)
+export const API_BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:8081").replace(/\/+$/, "");
+export const API_HOST = API_BASE_URL.replace(/^https?:\/\//, "");
+export const IS_LOCAL_API = /^(localhost|127\.0\.0\.1)(:|$)/.test(API_HOST);
+export const API_DOWN_HINT = IS_LOCAL_API
+  ? `The API on ${API_HOST} isn't responding. Start the Spring Boot backend, then retry.`
+  : `The API at ${API_HOST} isn't responding. The free server may still be waking up — retry in a minute.`;
 
 const api = axios.create({
   baseURL: API_BASE_URL,

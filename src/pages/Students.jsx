@@ -27,6 +27,7 @@ import { ConfirmDialog } from "../components/ConfirmDialog";
 import { Menu, MenuItem, MenuLabel, MenuSeparator } from "../components/Menu";
 import { StudentSheet } from "../components/StudentSheet";
 import { Avatar, DeptChip, EmptyState, Kbd, RoleBadge, Segmented, Select } from "../components/ui";
+import { API_DOWN_HINT } from "../api";
 import { useData, useToast } from "../lib/contexts";
 import { copyText } from "../lib/dom";
 import { useHotkeys } from "../lib/hotkeys";
@@ -398,7 +399,7 @@ export default function Students() {
           <EmptyState
             icon={ServerCrash}
             title="Can't load students"
-            description="The API on localhost:8081 isn't responding. Start the backend and retry."
+            description={API_DOWN_HINT}
           >
             <button type="button" className="btn btn-primary" onClick={refresh}>
               <RefreshCw aria-hidden="true" /> Retry

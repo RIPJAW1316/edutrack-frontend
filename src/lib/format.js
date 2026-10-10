@@ -1,4 +1,5 @@
 // Presentation helpers shared across the app.
+import { API_DOWN_HINT } from "../api";
 
 export function initials(name, fallback = "U") {
   const source = (name || "").trim();
@@ -117,6 +118,6 @@ export function errorMessage(err, fallback = "Something went wrong. Please try a
     }
     return fallback;
   }
-  if (err?.request) return "Can't reach the EduTrack API on localhost:8081. Is the backend running?";
+  if (err?.request) return API_DOWN_HINT;
   return err?.message || fallback;
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { ArrowUpRight, Clock, Keyboard, LogOut, Monitor, Moon, RefreshCw, Server, Sun } from "lucide-react";
-import { authService } from "../api";
+import { API_BASE_URL, authService } from "../api";
 import { Avatar, DeptChip, Kbd, RoleBadge, Segmented } from "../components/ui";
 import { useData, useTheme, useToast } from "../lib/contexts";
 import { decodeToken } from "../lib/session";
@@ -172,7 +172,7 @@ export default function Account() {
                   <Server width={14} height={14} className="subtle" aria-hidden="true" /> API connection
                 </p>
                 <p className="settings-row-desc">
-                  <span className="mono">http://localhost:8081</span> ·{" "}
+                  <span className="mono">{API_BASE_URL}</span> ·{" "}
                   {status === "ready"
                     ? `responding in ${latency} ms${syncedAt ? ` · synced ${timeOfDay(syncedAt)}` : ""}`
                     : status === "loading"

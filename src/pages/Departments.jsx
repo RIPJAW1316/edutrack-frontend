@@ -5,6 +5,7 @@ import { ConfirmDialog } from "../components/ConfirmDialog";
 import { DepartmentSheet } from "../components/DepartmentSheet";
 import { Menu, MenuItem, MenuSeparator } from "../components/Menu";
 import { AvatarStack, EmptyState, Kbd, Select } from "../components/ui";
+import { API_DOWN_HINT } from "../api";
 import { useData, useToast } from "../lib/contexts";
 import { useHotkeys } from "../lib/hotkeys";
 import { compareText, errorMessage, pluralize } from "../lib/format";
@@ -158,7 +159,7 @@ export default function Departments() {
           <EmptyState
             icon={ServerCrash}
             title="Can't load departments"
-            description="The API on localhost:8081 isn't responding. Start the backend and retry."
+            description={API_DOWN_HINT}
           >
             <button type="button" className="btn btn-primary" onClick={refresh}>
               <RefreshCw aria-hidden="true" /> Retry

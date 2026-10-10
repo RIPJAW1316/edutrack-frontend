@@ -1,4 +1,5 @@
 import { Command, KeyRound, Layers, ShieldCheck, Users, WifiOff } from "lucide-react";
+import { API_DOWN_HINT } from "../../api";
 import { Logo } from "../../components/Logo";
 import { ThemeToggle } from "../../components/ThemeToggle";
 
@@ -35,10 +36,7 @@ function Showcase({ departments, status }) {
           {status === "error" ? (
             <p className="stage-offline">
               <WifiOff aria-hidden="true" />
-              <span>
-                The API on <span className="mono">localhost:8081</span> isn&apos;t responding. Start the Spring Boot
-                backend to see live data here.
-              </span>
+              <span>{API_DOWN_HINT}</span>
             </p>
           ) : (
             <div className="stage-bars">

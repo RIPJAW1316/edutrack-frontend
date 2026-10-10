@@ -17,7 +17,7 @@ import {
   UserRound,
   Users,
 } from "lucide-react";
-import { authService } from "../api";
+import { API_DOWN_HINT, authService } from "../api";
 import { CommandPalette } from "./CommandPalette";
 import { ShortcutsDialog } from "./ShortcutsDialog";
 import { Dialog } from "../components/Dialog";
@@ -257,7 +257,7 @@ export default function AppShell() {
     toast(
       ok
         ? { tone: "success", title: "Data refreshed", description: "You're looking at the latest records." }
-        : { tone: "error", title: "Couldn't refresh", description: "The API on localhost:8081 didn't respond." }
+        : { tone: "error", title: "Couldn't refresh", description: API_DOWN_HINT }
     );
   };
 

@@ -18,6 +18,7 @@ import {
 import { BarList, SplitBar } from "../components/charts";
 import { Menu, MenuItem, MenuLabel } from "../components/Menu";
 import { Avatar, DeptChip, EmptyState, Kbd, RoleBadge } from "../components/ui";
+import { API_DOWN_HINT } from "../api";
 import { useData, useToast } from "../lib/contexts";
 import { modKey } from "../lib/hotkeys";
 import { errorMessage, firstName, greeting, longDate, pluralize, studentCode } from "../lib/format";
@@ -64,7 +65,7 @@ export default function Overview() {
           <EmptyState
             icon={ServerCrash}
             title="Can't reach the EduTrack API"
-            description="The Spring Boot backend on localhost:8081 isn't responding. Start it, then retry."
+            description={API_DOWN_HINT}
           >
             <button type="button" className="btn btn-primary" onClick={refresh}>
               <RefreshCw aria-hidden="true" /> Retry connection

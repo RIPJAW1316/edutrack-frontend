@@ -13,7 +13,7 @@ import {
   Mail,
   ShieldCheck,
 } from "lucide-react";
-import { authService } from "../../api";
+import { API_HOST, IS_LOCAL_API, authService } from "../../api";
 import { Field, Spinner } from "../../components/ui";
 import { errorMessage } from "../../lib/format";
 import { hasValidSession } from "../../lib/session";
@@ -98,8 +98,14 @@ export default function Login() {
           {showcase.status === "ready"
             ? "All systems operational"
             : showcase.status === "error"
-              ? "API unreachable on :8081"
-              : "Checking API status…"}
+              ? IS_LOCAL_API
+                ? `API unreachable on ${API_HOST}`
+                : "API unreachable — retry in a minute"
+              : showcase.slow
+                ? IS_LOCAL_API
+                  ? `Still connecting to ${API_HOST}…`
+                  : "Waking up the server — up to a minute on free hosting…"
+                : "Checking API status…"}
         </span>
 
         <h1 className="auth-title">Welcome back</h1>
