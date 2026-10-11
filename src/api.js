@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// Set VITE_API_URL at build time for deployments (e.g. https://edutrack-api-ripjaw.onrender.com)
+// Set VITE_API_URL at build time for deployments (e.g. https://edutrack-api-ripjaw-production.up.railway.app)
 export const API_BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:8081").replace(/\/+$/, "");
 export const API_HOST = API_BASE_URL.replace(/^https?:\/\//, "");
 export const IS_LOCAL_API = /^(localhost|127\.0\.0\.1)(:|$)/.test(API_HOST);
