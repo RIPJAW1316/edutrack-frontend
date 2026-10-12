@@ -1,16 +1,38 @@
-# React + Vite
+# EduTrack frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 and Vite client for the [EduTrack backend](https://github.com/RIPJAW1316/edutrack-backend). The app includes a student directory, departments, an overview dashboard, account pages, and light and dark themes.
 
-Currently, two official plugins are available:
+![EduTrack overview dashboard](docs/overview-dark.webp)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run locally
 
-## React Compiler
+Requires Node.js 20 or newer and a running API.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm ci
+npm run dev
+```
 
-## Expanding the ESLint configuration
+The app opens at `http://localhost:5173`. By default it calls `http://localhost:8081`. To use a different API, set `VITE_API_URL` in a local `.env` file or in your deployment environment:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+VITE_API_URL=https://your-api.example.com
+```
+
+`VITE_API_URL` is read at build time. Rebuild or redeploy after changing it. The backend must allow the frontend origin through CORS.
+
+## Checks
+
+```bash
+npm run lint
+npm run build
+```
+
+## Deployment
+
+Deploy this repository's root on Vercel. [`vercel.json`](vercel.json) configures Vite output and SPA route rewrites. Set `VITE_API_URL` to the public backend URL. The current demo is at [edutrack-ripjaw.vercel.app](https://edutrack-ripjaw.vercel.app).
+
+## Related repositories
+
+- [Spring Boot API and Dockerfile](https://github.com/RIPJAW1316/edutrack-backend)
+- [Original combined repository](https://github.com/RIPJAW1316/edutrack)
